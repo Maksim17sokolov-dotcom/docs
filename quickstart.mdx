@@ -1,47 +1,113 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Get Started with WORM VEIL AI in Minutes"
+sidebarTitle: "Quickstart"
+description: "Start chatting instantly — no sign-up needed. Pick an agent mode, protect your privacy with Tor routing, and explore built-in OSINT tools in WORM VEIL AI."
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
-
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
-
-## Prerequisites
-
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+WORM VEIL AI drops you straight into a private, uncensored AI chat session the moment you open the app. There are no accounts to create, no emails to verify, and no personal information to hand over — your anonymous identity is generated automatically and stored only in your browser. Follow the steps below to go from zero to your first secure conversation in minutes.
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
 
-    ```bash
-    npm install your-package
-    ```
-  </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
+  <Step title="Open WORM VEIL AI">
+    Navigate to the WORM VEIL AI web app in Chrome, Edge, or Safari. The platform runs entirely in your browser — no installation required.
 
-    ```bash
-    your-cli init
-    ```
-  </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
+    On your very first visit, the app silently registers an anonymous account for you. A unique user ID is generated and saved to your browser's `localStorage`. This ID is the only identifier the system ever associates with your session, and it never leaves your device in a form tied to personal information.
 
-    ```bash
-    your-cli start
-    ```
+    <Tip>
+      Copy your unique user ID from the sidebar (open the hamburger menu → **Chats** tab → scroll to the footer) and store it somewhere safe if you want to restore access to your chat history from another device or browser. Without it, cross-device continuity is not possible.
+    </Tip>
   </Step>
+
+  <Step title="Choose an Agent Mode">
+    Locate the **agent selector dropdown** in the top bar — it defaults to **🤖 Normal**. Click it to reveal the six available modes and select the one that best matches your task:
+
+    | Mode | Best for |
+    |---|---|
+    | **Normal** | General-purpose conversation and everyday questions |
+    | **Pentester** | Penetration testing methodology, CTF challenges, and security assessments |
+    | **OSINT** | Open-source intelligence gathering, reconnaissance, and data correlation |
+    | **Exploit Dev** | Vulnerability research, shellcode, and low-level exploit development |
+    | **Social Engineering** | Phishing simulations, pretexting scenarios, and awareness training |
+    | **Code Review** | Auditing source code for bugs, logic flaws, and security weaknesses |
+
+    Each mode tunes the underlying Dolphin 3.0 Abliterated 8B model's system prompt and response style for its specialist domain. You can switch modes at any point mid-session — the change takes effect on your very next message.
+  </Step>
+
+  <Step title="Start Your First Chat">
+    Click inside the **textarea** at the bottom of the chat window and type your message. When you're ready to send:
+
+    - Press **Enter** to send the message immediately.
+    - Press **Shift + Enter** to insert a newline and keep composing.
+    - Or click the **Send** button to the right of the textarea.
+
+    Watch the **status badge** in the top bar — it moves through three states:
+
+    - 🟢 **ONLINE** — The backend is ready and waiting.
+    - 🟡 **GENERATING** — The model is actively streaming a response to you.
+    - 🔴 **OFFLINE** — The AI backend is unreachable.
+
+    <Note>
+      If the status badge turns red and displays **OFFLINE**, the model backend is temporarily unavailable. This can happen during node maintenance or a Tor circuit reset. Wait a moment and refresh the page — the app will automatically attempt to reconnect through one of the three server nodes (Amsterdam, Singapore, or Panama).
+    </Note>
+
+    Your conversation is stored only in your browser's `localStorage`. Nothing is written to a server database — all messages are processed in RAM and discarded immediately after the response is delivered.
+  </Step>
+
+  <Step title="Use Voice Input">
+    Click the **microphone button** (🎤) to the right of the Send button to dictate your message instead of typing.
+
+    The Web Speech API transcribes your speech in real time and populates the textarea. Review the transcription, then press **Enter** or click **Send** as usual.
+
+    <Note>
+      Voice input is supported in **Chrome**, **Edge**, and **Safari**. Firefox does not currently implement the Web Speech API. If the microphone button is greyed out, check that your browser has been granted microphone permission for the site.
+    </Note>
+  </Step>
+
+  <Step title="Explore the Scanner & OSINT Panel">
+    Click the **🔍 icon** in the top-right corner of the top bar to open the integrated **Scanner & OSINT** panel.
+
+    From this panel you can:
+
+    - Run a **vulnerability scan** against a target host or URL to surface common misconfigurations and known CVEs.
+    - Perform an **OSINT lookup** to aggregate publicly available information about a domain, IP address, or identifier.
+
+    Results appear inline within the panel and can be copied directly into the chat window for the active agent to analyse and act on.
+
+    <Tip>
+      Switch to **OSINT mode** or **Pentester mode** before pasting scanner results into the chat — these agents are tuned to interpret technical output and suggest concrete next steps.
+    </Tip>
+  </Step>
+
+  <Step title="Manage Your Privacy">
+    WORM VEIL AI never stores your messages server-side, but your chat history does accumulate in `localStorage` on your device. Use the **auto-clear controls** in the sidebar footer (open the sidebar → **Chats** tab → scroll to the bottom) to schedule automatic deletion:
+
+    - **5 minutes** — Clears history five minutes after your last message.
+    - **1 hour** — Purges history after an hour of inactivity.
+    - **Custom** — Set any interval in minutes that suits your workflow.
+    - **Instant** — Wipes all chat history from `localStorage` immediately.
+
+    <Warning>
+      Clearing your chat history is irreversible. Because WORM VEIL AI maintains zero server-side logs, there is no backup copy to recover from. Enable auto-clear only when you are certain you no longer need the local record.
+    </Warning>
+
+    Your traffic is already routed through Tor and proxy chains by default — you do not need to configure anything to benefit from multi-layer anonymity. See [Anonymity & Privacy](/concepts/anonymity) for a deep dive into the routing architecture.
+  </Step>
+
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
+## Next Steps
 
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+<CardGroup cols={2}>
+  <Card title="Agent Modes" icon="robot" href="/concepts/agents">
+    Learn how each of the six specialist agents is configured, when to use them, and how to get the most precise responses for your task.
+  </Card>
+  <Card title="Anonymity & Privacy" icon="shield-halved" href="/concepts/anonymity">
+    Understand the Tor routing, VPN tunnels, and proxy chain architecture that keeps your sessions private by design.
+  </Card>
+  <Card title="Scanner & OSINT Guide" icon="magnifying-glass" href="/guides/scanner-osint">
+    Step-by-step instructions for running vulnerability scans and OSINT lookups from the built-in panel.
+  </Card>
+  <Card title="Zero-Log Policy" icon="lock" href="/security/zero-log">
+    Read the full technical breakdown of how WORM VEIL AI processes messages in RAM and guarantees no persistent server-side logs.
+  </Card>
+</CardGroup>

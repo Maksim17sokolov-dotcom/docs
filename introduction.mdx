@@ -1,0 +1,65 @@
+---
+title: "WORM VEIL AI: Your Uncensored, Anonymous AI Assistant"
+sidebarTitle: "Introduction"
+description: "WORM VEIL AI is an uncensored AI chat platform with zero-log privacy, Tor-based anonymity, and specialized agent modes for security and research."
+---
+
+WORM VEIL AI is a browser-based AI chat platform built from the ground up around one principle: you should be able to think, research, and converse freely — without surveillance, censorship, or a paper trail. Every message you send is processed in RAM and deleted the moment a response is delivered. No logs are written, no personal information is collected, and your connection is routed through Tor, VPN tunnels, and proxy chains before it ever reaches the model. Whether you're a security researcher, a privacy advocate, or simply someone who values unfiltered access to AI, WORM VEIL AI gives you a workspace that gets out of your way.
+
+## What Makes WORM VEIL AI Different
+
+Most AI platforms log your conversations, tie them to an account, and apply content filters that restrict what you can ask. WORM VEIL AI takes the opposite approach: no filters, no logs, no identity requirements, and no cost. Your session exists only in your browser until you close it.
+
+<CardGroup cols={2}>
+  <Card title="Multi-Layer Anonymity" icon="shield-halved">
+    Every request travels through Tor routing, VPN tunnels, and proxy chains before reaching the model host. DNS-over-HTTPS, TLS 1.3, and Perfect Forward Secrecy protect your connection at every hop.
+  </Card>
+  <Card title="Six Specialized Agent Modes" icon="robot">
+    Switch between Normal, Pentester, OSINT, Exploit Dev, Social Engineering, and Code Review modes — each tailored to give you the most relevant, unfiltered responses for your task.
+  </Card>
+  <Card title="Integrated Scanner & OSINT" icon="magnifying-glass">
+    A built-in vulnerability scanner and OSINT lookup panel let you run reconnaissance and analysis directly inside the chat interface without switching tools.
+  </Card>
+  <Card title="Voice Input" icon="microphone">
+    Speak your prompts instead of typing them. Voice input is powered by the Web Speech API and works entirely within your browser — no audio is transmitted to external services.
+  </Card>
+  <Card title="Auto-Clear History" icon="clock-rotate-left">
+    Set a configurable timer to automatically wipe your chat history from localStorage. Walk away from your session knowing nothing persists on your device after the timer fires.
+  </Card>
+  <Card title="Completely Free & Donation-Funded" icon="circle-dollar-to-slot">
+    WORM VEIL AI costs nothing to use. The platform is funded entirely by voluntary cryptocurrency donations from the community, with no subscriptions, paywalls, or ads.
+  </Card>
+</CardGroup>
+
+## The Model: Dolphin 3.0 Abliterated 8B
+
+WORM VEIL AI runs on **Dolphin 3.0 Abliterated 8B**, served via Ollama on the primary Panama node — a dedicated host equipped with four NVIDIA A100 GPUs. The "abliterated" variant means the model's built-in refusal behaviors have been surgically removed at the weight level, not patched over with a system prompt. You get direct, unconditioned responses rather than filtered approximations.
+
+Requests are distributed across three server nodes:
+
+| Node | Location | Role |
+|---|---|---|
+| **Node 1** | Amsterdam | VPN gateway |
+| **Node 2** | Singapore | Load balancer |
+| **Node 3** | Panama | Main Ollama host (4× A100) |
+
+<Info>
+  Because inference runs on dedicated A100 hardware, response quality and speed remain consistent even during peak usage — no rate limiting, no throttling, no degraded modes.
+</Info>
+
+## Zero-Log Privacy Architecture
+
+"Zero-log" is not a policy statement — it is a technical constraint baked into how the platform operates:
+
+- Messages are held **in RAM only** during processing and are deleted immediately after the response is returned.
+- Chat history is stored **exclusively in your browser's localStorage**. Nothing is persisted on any server.
+- Your account is identified by a randomly generated ID stored in your browser. No email address, phone number, or personal information is ever collected.
+- All traffic is encrypted with **AES-256-GCM** and **ChaCha20**, transmitted over **TLS 1.3** with **Perfect Forward Secrecy**, and routed through **WebSocket over Tor**.
+
+<Note>
+  Because nothing is stored server-side, WORM VEIL AI has nothing to hand over in response to data requests, subpoenas, or breaches. Your conversation history exists only where you choose to keep it.
+</Note>
+
+## Completely Free to Use
+
+WORM VEIL AI has no subscription tiers, no token limits, and no premium features locked behind a paywall. The entire platform — including all six agent modes, the scanner, OSINT panel, and voice input — is available to every user at no cost. If you find the platform valuable, you can support its continued operation through a voluntary cryptocurrency donation.

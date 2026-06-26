@@ -1,0 +1,71 @@
+---
+title: "Encryption and Transport Security in WORM VEIL AI"
+sidebarTitle: "Encryption"
+description: "WORM VEIL encrypts every request with AES-256-GCM and TLS 1.3, adds Perfect Forward Secrecy, DNS-over-HTTPS, and routes traffic through Tor for full obfuscation."
+---
+
+Every request you send through WORM VEIL AI is encrypted before it leaves your browser and remains protected across every hop in the routing chain. Rather than relying on a single layer of protection, WORM VEIL stacks multiple independent cryptographic mechanisms — each one ensuring that even if one layer were somehow compromised, the others continue to protect your traffic and identity.
+
+## In-Transit Encryption
+
+All communication between your browser and WORM VEIL infrastructure uses **TLS 1.3**, the current gold standard for transport security. Older, vulnerable protocol versions (TLS 1.0, 1.1, 1.2) are disabled entirely.
+
+**Perfect Forward Secrecy (PFS)** is enforced on every connection. This means a brand-new cryptographic session key is generated for each connection you make — your key today has no mathematical relationship to your key yesterday. If an adversary somehow obtained a session key in the future, they could not use it to decrypt any past session.
+
+<Note>
+  Perfect Forward Secrecy means that even a theoretical future compromise of WORM VEIL's server credentials would not expose any of your previous conversations. Each session's encryption keys are ephemeral — they exist only for the duration of that connection and are then discarded permanently.
+</Note>
+
+**Certificate Pinning** is enforced in the WORM VEIL client. Your browser is pre-configured to accept only the exact TLS certificates issued to WORM VEIL's infrastructure. If an attacker attempted a man-in-the-middle attack by presenting a fraudulent certificate — even one signed by a trusted certificate authority — the connection would be rejected immediately.
+
+## Cipher Suite
+
+WORM VEIL uses modern, audited symmetric ciphers for all encryption operations:
+
+| Cipher | Use Case | Security Properties |
+|---|---|---|
+| **AES-256-GCM** | Primary cipher, all nodes | 256-bit key, authenticated encryption, hardware-accelerated |
+| **ChaCha20** | Amsterdam gateway alternative | Software-optimized, constant-time, resistant to timing attacks |
+| **WireGuard** | Amsterdam VPN tunnel | Modern VPN protocol, minimal attack surface, formally verified crypto |
+
+**AES-256-GCM** provides authenticated encryption with associated data (AEAD), meaning it simultaneously encrypts your data and verifies its integrity. Any tampering with the ciphertext in transit is detected and rejected.
+
+**ChaCha20** is used as an alternative cipher on the Amsterdam gateway. It is the cipher of choice in environments where hardware AES acceleration is unavailable, and it provides strong resistance to timing side-channel attacks due to its constant-time implementation.
+
+**WireGuard** underpins the VPN tunnel at the Amsterdam gateway. Unlike legacy VPN protocols, WireGuard has a minimal, auditable codebase and uses only modern, well-reviewed cryptographic primitives.
+
+## Traffic Obfuscation
+
+Encrypting your message content is necessary but not sufficient — the fact that you are communicating at all can itself be sensitive information. WORM VEIL adds two layers of traffic obfuscation to address this.
+
+**WebSocket over Tor** routes your encrypted messages through the Tor anonymity network before they reach WORM VEIL's infrastructure. This obfuscates traffic patterns, prevents network-level observers from correlating your connection timing with server activity, and strips your real IP address from the request before it reaches the Amsterdam gateway.
+
+**DNS-over-HTTPS (DoH)** ensures that your DNS lookups — the queries your browser makes to resolve WORM VEIL's domain names — are encrypted and sent over HTTPS rather than in plaintext UDP. This prevents your ISP, network administrator, or a local attacker from observing which services you are connecting to, even if they cannot read your message content.
+
+<Tip>
+  For an additional layer of traffic obfuscation, use the **Tor Browser** to access WORM VEIL. This nests Tor-over-Tor routing, further separating your real network identity from your WORM VEIL activity and making traffic correlation attacks significantly harder.
+</Tip>
+
+## Browser-Side Protections
+
+The most sophisticated server-side security can be undermined by browser APIs that leak identifying information. WORM VEIL's client disables or spoofs several such APIs before your first request is ever sent.
+
+<CardGroup cols={2}>
+  <Card title="WebRTC Disabled" icon="wifi-slash">
+    WebRTC is a browser API that can expose your real IP address — even behind a VPN or Tor — by establishing direct peer-to-peer connections. WORM VEIL disables WebRTC entirely, closing this common deanonymization vector.
+  </Card>
+  <Card title="Canvas Fingerprint Noise" icon="paintbrush">
+    Websites can fingerprint your browser by rendering hidden graphics and reading back the pixel data, which varies subtly between hardware and driver combinations. WORM VEIL injects random noise into canvas pixel data, making each read unique and non-attributable.
+  </Card>
+  <Card title="AudioContext Noise" icon="waveform">
+    Similar to canvas fingerprinting, audio APIs can fingerprint your device by measuring how your hardware processes audio signals. WORM VEIL randomizes audio buffer output to neutralize this technique.
+  </Card>
+  <Card title="WebGL Spoofing" icon="cube">
+    WebGL exposes your GPU vendor and renderer strings, which are highly identifying. WORM VEIL overrides these to return the generic values `"Vendor"` and `"Renderer"`, preventing hardware-based fingerprinting.
+  </Card>
+  <Card title="User-Agent Override" icon="browser">
+    Your browser's `navigator.userAgent` string reveals your OS, browser version, and build details. WORM VEIL overrides this with a generic Windows Chrome user-agent string, blending you into the largest possible anonymity set.
+  </Card>
+</CardGroup>
+
+These protections operate entirely on the client side and require no action from you — they are active from the moment you open WORM VEIL in your browser.

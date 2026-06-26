@@ -1,0 +1,90 @@
+---
+title: "Running Vulnerability Scans and OSINT Lookups"
+sidebarTitle: "Scanner & OSINT"
+description: "Use the built-in Scanner and OSINT panel to run AI-powered recon on IP addresses and domains, and gather structured intelligence on any target."
+---
+
+WORM VEIL's Scanner & OSINT panel gives you two fast recon tools without leaving the chat interface. The Scanner profiles IP addresses and domains for open ports, CVEs, and hardening recommendations. The OSINT tool builds structured intelligence reports from emails, usernames, domains, and full names. Both tools surface their results as clean, monospace-formatted reports you can read and copy directly.
+
+## Opening the Panel
+
+Click the **🔍 icon** in the top bar to open the Scanner & OSINT panel. The panel overlays the interface and closes automatically when you click anywhere outside it. Inside you'll find two tabs: **🛡️ Scanner** and **🌐 OSINT**.
+
+---
+
+## Vulnerability Scanner
+
+The Scanner tab sends your target to the AI and returns a structured reconnaissance report. It checks for commonly exposed services across standard ports and correlates findings with known CVEs to give you an actionable picture of a target's attack surface.
+
+<Steps>
+  <Step title="Open the Scanner tab">
+    Click **🔍** in the top bar to open the panel, then select the **🛡️ Scanner** tab.
+  </Step>
+  <Step title="Enter your target">
+    Type an IP address or domain name into the input field. Examples:
+
+    ```
+    192.168.1.1
+    ```
+    ```
+    example.com
+    ```
+  </Step>
+  <Step title="Run the scan">
+    Click **Scan**. The agent begins generating the reconnaissance report immediately.
+  </Step>
+  <Step title="Read the report">
+    Results appear as monospace pre-formatted text. The report covers:
+
+    - **Open ports** — checks ports 21 (FTP), 22 (SSH), 80 (HTTP), 443 (HTTPS), 3306 (MySQL), 3389 (RDP), 8080, and 8443
+    - **CVEs** — known vulnerabilities associated with detected services and their versions
+    - **Recommendations** — prioritized hardening steps based on what was found
+  </Step>
+</Steps>
+
+<Note>
+  Scan results are AI-generated intelligence reports, not live network probes. The agent reasons from its training data about likely configurations and known vulnerabilities for the services it identifies — treat the output as a recon starting point, not a real-time port scan.
+</Note>
+
+---
+
+## OSINT Lookup
+
+The OSINT tab generates open-source intelligence reports on people, organizations, and infrastructure. Submit a query and receive a structured brief covering every publicly associated data point the model can reason about.
+
+<Steps>
+  <Step title="Open the OSINT tab">
+    Click **🔍** in the top bar to open the panel, then select the **🌐 OSINT** tab.
+  </Step>
+  <Step title="Enter your query">
+    Type your target identifier into the input field. Supported query types:
+
+    | Query type | Example |
+    |---|---|
+    | Email address | `target@example.com` |
+    | Username | `h4x0r_username` |
+    | Domain | `acmecorp.io` |
+    | Full name | `John Doe` |
+  </Step>
+  <Step title="Run the lookup">
+    Click **Search**. The agent generates your OSINT report.
+  </Step>
+  <Step title="Read the report">
+    Results appear as a structured, monospace-formatted brief. Depending on the query type, the report may include:
+
+    - **Email addresses** — associated accounts and patterns
+    - **Social media profiles** — linked platforms and handles
+    - **GitHub presence** — public repositories, commit history, contact info
+    - **Leaked data** — appearances in known breach databases
+  </Step>
+</Steps>
+
+<Note>
+  OSINT results are AI-generated intelligence assessments based on training data, not live queries to external databases. Use the output to guide further manual investigation with dedicated OSINT tools.
+</Note>
+
+---
+
+<Tip>
+  Combine both tabs for comprehensive target recon. Start with OSINT on a domain to map the organization's email patterns, key personnel, and technology stack. Then switch to the Scanner tab and run a scan against the IP addresses or subdomains you uncovered. The two reports together give you a full-spectrum picture of the target's external footprint.
+</Tip>

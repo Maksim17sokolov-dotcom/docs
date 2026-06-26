@@ -1,0 +1,78 @@
+{
+  "projectType": "saas",
+  "projectName": "WORM VEIL AI",
+  "projectDescription": "An uncensored AI chat platform with built-in anonymity infrastructure, specialized agent modes, and integrated OSINT and vulnerability scanning tools.",
+  "theme": "luma",
+  "primaryColor": "#ef7025",
+  "lightColor": "#eec9bc",
+  "darkColor": "#4fa1ab",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "account-setup"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "concepts/anonymity",
+              "concepts/agents",
+              "concepts/chat-history"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/using-agents",
+              "guides/scanner-osint",
+              "guides/voice-input",
+              "guides/auto-clear"
+            ]
+          },
+          {
+            "group": "Privacy & Security",
+            "pages": [
+              "security/zero-log",
+              "security/encryption",
+              "security/servers"
+            ]
+          },
+          {
+            "group": "FAQ",
+            "pages": [
+              "faq/general",
+              "faq/troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Uncensored AI chat powered by Dolphin 3.0 Abliterated 8B model",
+    "Specialized agent modes: Pentester, OSINT, Exploit Dev, Social Engineering, Code Review",
+    "Zero-log policy with all data processed in RAM",
+    "Multi-layer anonymity: Tor routing, VPN tunnels, proxy chains",
+    "Integrated vulnerability scanner and OSINT lookup panel",
+    "Voice input via Web Speech API",
+    "Auto-clear chat history on a configurable timer",
+    "Persistent multi-chat history stored locally in browser",
+    "AES-256-GCM + TLS 1.3 encryption in transit",
+    "Servers in privacy-friendly jurisdictions (Amsterdam, Singapore, Panama)"
+  ],
+  "publicApiSurface": [
+    "POST /api/generate — send a chat message to the Ollama model",
+    "POST /api/register — auto-register a new user account",
+    "POST /api/login — log in with existing user ID",
+    "GET /api/admin/users — list users (admin only)",
+    "POST /api/admin/ban — ban a user (admin only)",
+    "POST /api/admin/unban — unban a user (admin only)"
+  ]
+}

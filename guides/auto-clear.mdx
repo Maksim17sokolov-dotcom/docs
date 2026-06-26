@@ -1,0 +1,65 @@
+---
+title: "Auto-Clear Chat History for Maximum Privacy"
+sidebarTitle: "Auto-Clear"
+description: "Schedule automatic deletion of your entire chat history after 5 minutes or 1 hour, or wipe everything instantly with a single click."
+---
+
+On a shared device or after a sensitive session, leaving chat history in the browser is a liability. WORM VEIL's auto-clear feature lets you schedule a full wipe on a countdown timer — 5 minutes or 1 hour — so your history disappears automatically without you having to remember to clear it. If you need to act immediately, a single button erases everything at once and reloads the page clean.
+
+## Where to Find the Controls
+
+The auto-clear buttons sit in the **sidebar footer** — scroll to the very bottom of the left panel. You'll see four controls grouped together.
+
+## The Four Buttons
+
+<CardGroup cols={2}>
+  <Card title="🧹 5 min" icon="clock">
+    Schedules a clear in **5 minutes**. When the timer expires, WORM VEIL shows a confirmation dialog before deleting anything. Confirm to proceed with the wipe.
+  </Card>
+  <Card title="🧹 1 hour" icon="clock">
+    Schedules a clear in **1 hour**. Behaves identically to the 5-minute timer but gives you a longer working window before the confirmation dialog appears.
+  </Card>
+  <Card title="⏹️ Cancel" icon="stop">
+    Stops any active auto-clear timer immediately. No data is deleted. Use this if your session ends earlier than expected or you decide to keep your history.
+  </Card>
+  <Card title="🗑️ All at once" icon="trash">
+    **Immediately** clears all `localStorage` data and reloads the page. No timer, no confirmation dialog — the wipe is instant and complete.
+  </Card>
+</CardGroup>
+
+## Setting Up Auto-Clear
+
+<Steps>
+  <Step title="Open the sidebar">
+    The sidebar is the left panel showing your chat list. If it's collapsed, click the menu icon to expand it.
+  </Step>
+  <Step title="Scroll to the footer">
+    Scroll down past your chat history to the bottom of the sidebar. The auto-clear controls are pinned to the footer.
+  </Step>
+  <Step title="Choose your timer">
+    Click **🧹 5 min** for a short-session wipe or **🧹 1 hour** for a longer working window. The timer starts immediately.
+  </Step>
+  <Step title="Confirm when prompted">
+    When the countdown expires, a confirmation dialog appears. Confirm to complete the wipe. If you click **Cancel** in the dialog, the data is preserved and the timer is stopped.
+  </Step>
+</Steps>
+
+## What Gets Deleted
+
+Every auto-clear action — whether timer-based or immediate — removes the following from `localStorage`:
+
+- All chat messages and conversation content
+- Chat titles and session metadata
+- Your user ID
+- Active agent preference
+- Total request count
+
+After a wipe, WORM VEIL reloads the page as a fresh session. You will be assigned a new user ID and the agent selector resets to the default.
+
+<Warning>
+  **🗑️ All at once** is a full reset with no confirmation step and no undo. It deletes not just your chat messages but also your user ID and all saved settings. Use it when you need an immediate clean slate, but be aware that everything — including your agent preference and session identity — is gone the moment you click it.
+</Warning>
+
+<Tip>
+  For highly sensitive sessions, activate the **🧹 5 min** timer as soon as you start chatting. That way, even if you step away from your device and forget to clear manually, the wipe happens automatically within five minutes of the timer being set. Pair this with WORM VEIL's Tor routing for maximum operational security.
+</Tip>

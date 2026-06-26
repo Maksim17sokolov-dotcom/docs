@@ -1,0 +1,76 @@
+---
+title: "Set Up Your Anonymous WORM VEIL AI Account"
+sidebarTitle: "Account Setup"
+description: "WORM VEIL AI automatically creates an anonymous account the moment you open the app — no email, phone number, or personal information required."
+---
+
+The moment you open WORM VEIL AI, the platform silently creates an anonymous account for you. There is no sign-up form, no email confirmation, and no personal information requested at any point. Your identity on the platform is a randomly generated unique ID — nothing more. That ID is stored in your browser's localStorage alongside your chat history and preferences. Everything tied to your account lives on your device, not on any server.
+
+## How Account Creation Works
+
+WORM VEIL AI uses a "zero-registration" model: account provisioning happens automatically in the background when you first load the app. The platform generates a unique ID, timestamps your registration, and begins tracking aggregate stats like total requests and number of chats — all stored locally in your browser. No data about your identity, location, or device is sent to or retained by any server.
+
+<Info>
+  Your account exists as long as your browser's localStorage for the WORM VEIL AI domain remains intact. Clearing your browser data or using a different browser on the same device will create a new, separate account unless you log in with your saved ID.
+</Info>
+
+## Your User ID
+
+Your user ID is the single credential that represents your account. It is a randomly generated string assigned at registration — think of it as a pseudonymous key rather than a username. You can use it to:
+
+- **Resume your account** on a different device or browser.
+- **Recover access** if you clear your localStorage accidentally.
+- **Verify your identity** when reaching out for community support.
+
+<Warning>
+  Save your user ID somewhere safe **before** you need it. If you lose it and your localStorage is cleared, your account history, stats, and preferences cannot be recovered — the platform has no server-side record of them. There is no password reset, no support escalation path, and no fallback.
+</Warning>
+
+## Where to Find Your User ID
+
+Your user ID is displayed in the **sidebar footer** at the bottom of the left navigation panel. Look for the account info section at the very bottom of the sidebar — your ID appears there alongside your registration date and usage stats. Click the ID to copy it to your clipboard.
+
+## Account Information You Can View
+
+The sidebar footer surfaces the following details about your account:
+
+| Field | Description |
+|---|---|
+| **User ID** | Your unique anonymous identifier |
+| **Registration Date** | The date and time your account was auto-created |
+| **Total Requests** | Cumulative number of messages you have sent |
+| **Number of Chats** | Total chat sessions stored in your localStorage |
+
+## What Is Stored Where
+
+Understanding where your data lives helps you control it:
+
+- **Browser localStorage** — your user ID, registration date, usage stats, chat history, and app preferences.
+- **Server-side** — nothing. No messages, no account details, no logs of any kind are retained on WORM VEIL AI's infrastructure.
+
+Because chat history is stored in localStorage, it is device-specific and browser-specific by default. Switching to a different browser on the same machine will start a fresh session unless you log in with your ID.
+
+<Tip>
+  If you want your chat history available across devices, export individual chats from the interface before switching devices. The platform does not sync localStorage between devices — your ID gets you the same account, but not the same local history.
+</Tip>
+
+## Getting Set Up: Step by Step
+
+<Steps>
+  <Step title="Open the app — you're already registered">
+    Navigate to the WORM VEIL AI URL in your browser. The platform automatically generates your anonymous user ID and registers your account in the background. No action is required on your part. You can start chatting immediately.
+  </Step>
+  <Step title="Find your user ID in the sidebar">
+    Look at the bottom of the left sidebar for the account info section. Your unique user ID is displayed in the sidebar footer. Click it to copy it to your clipboard.
+  </Step>
+  <Step title="Save your ID for other devices">
+    Paste your copied user ID into a password manager, an encrypted notes app, or any secure location you control. This ID is the only thing you need to access your account from another device or browser — treat it like a password.
+  </Step>
+  <Step title="Log in on a new device">
+    On the new device, open WORM VEIL AI in a browser. Before the app auto-registers a new account, locate the **Login with ID** option in the sidebar or settings panel. Enter your saved user ID to link this browser session to your existing account. Your account stats will sync, though localStorage-based chat history remains on the original device.
+  </Step>
+</Steps>
+
+<Note>
+  Logging in with your ID on a new device does not transfer your chat history — it only associates the new session with your existing account record. If you need your previous chats, export them from the original device first.
+</Note>

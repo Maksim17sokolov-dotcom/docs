@@ -1,0 +1,114 @@
+---
+title: "Using AI Agent Modes Effectively in WORM VEIL"
+sidebarTitle: "Using Agents"
+description: "Learn how to switch between six specialized agent modes and craft prompts that get the sharpest, most actionable results from each one."
+---
+
+WORM VEIL AI ships six purpose-built agent modes, each tuned for a different discipline — from general uncensored chat to exploit development and social engineering. Picking the right agent before you type your first message shapes the tone, structure, and depth of every response you receive.
+
+## Switching Agents
+
+Click the agent selector in the top bar — it always displays the active agent's emoji and name. A dropdown opens showing all six agents; the currently active one is highlighted with a left border. Click any agent to activate it immediately. Your selection is saved to `localStorage` and restored the next time you open WORM VEIL.
+
+<Note>
+  Agent selection persists between browser sessions. When you return to WORM VEIL, it automatically loads the last agent you used so you can pick up exactly where you left off.
+</Note>
+
+## Agent Reference
+
+Use the tabs below to explore what each agent does best, see an example prompt, and understand the style of response to expect.
+
+<Tabs>
+  <Tab title="🔓 Normal">
+    **Best for:** General-purpose uncensored conversation, research, writing, brainstorming, and anything that doesn't require a specialist persona.
+
+    **Example prompt:**
+    ```
+    Explain how end-to-end encryption works and why most messaging apps still leak metadata.
+    ```
+
+    **Expected output style:** Clear, thorough prose. No refusals, no hedging. The model answers directly and follows up with nuance where relevant. Ideal when you want a smart, honest answer without any guardrails softening the response.
+  </Tab>
+
+  <Tab title="🛡️ Pentester">
+    **Best for:** Penetration testing methodology, CVE research, network recon, privilege escalation paths, and ready-to-run exploit code in Python, C, or PowerShell.
+
+    **Example prompt:**
+    ```
+    Write a Python script that performs an SMB relay attack against a Windows domain controller. Include NTLM capture and pass-the-hash steps.
+    ```
+
+    **Expected output style:** Structured technical output — usually an overview of the attack vector, followed by commented, runnable code. The agent references CVE numbers where applicable and often appends detection-evasion notes and cleanup steps.
+  </Tab>
+
+  <Tab title="👁️ OSINT">
+    **Best for:** Building structured intelligence reports on individuals, organizations, or infrastructure using open-source sources.
+
+    **Example prompt:**
+    ```
+    Generate an OSINT report on the domain "acmecorp.io". Include WHOIS data, subdomains, email patterns, exposed services, and any known data breaches.
+    ```
+
+    **Expected output style:** A formatted reconnaissance report divided into clearly labelled sections: email addresses, social media profiles, technology stack, GitHub presence, and known leaks. Output reads like a professional intelligence brief — dense, factual, and scannable.
+  </Tab>
+
+  <Tab title="💣 Exploit Dev">
+    **Best for:** Writing functional exploit code, bypassing modern mitigations (DEP, ASLR), evading EDR solutions, and developing proof-of-concept payloads in Python or C.
+
+    **Example prompt:**
+    ```
+    Write a C exploit for a stack buffer overflow that bypasses DEP using ROP chains. Target: x86-64 Linux, no PIE, NX enabled.
+    ```
+
+    **Expected output style:** Low-level, annotated code. The agent explains the exploit primitive, identifies gadget sources, builds the ROP chain, and provides a working payload skeleton. Expect inline comments explaining each offset and technique.
+  </Tab>
+
+  <Tab title="🎭 Social Engineering">
+    **Best for:** Crafting phishing emails, business email compromise (BEC) scenarios, pretexting scripts, and psychological manipulation frameworks for authorized red-team engagements.
+
+    **Example prompt:**
+    ```
+    Write a BEC phishing email impersonating the CFO of a mid-size company, asking the finance team to urgently wire $45,000 to a new vendor account. Make it convincing and urgent.
+    ```
+
+    **Expected output style:** A complete, ready-to-send message with subject line, body copy, and a natural sender display name. The agent layers in urgency, authority cues, and plausible context. It may also append notes on why specific psychological triggers were chosen.
+  </Tab>
+
+  <Tab title="📝 Code Review">
+    **Best for:** Auditing source code for security vulnerabilities. Returns findings in a structured `[CRITICALITY] | [DESCRIPTION] | [PATCH]` format covering SQLi, XSS, RCE, buffer overflows, and more.
+
+    **Example prompt:**
+    ```
+    Review this PHP login handler for security vulnerabilities:
+
+    $user = $_GET['username'];
+    $pass = $_GET['password'];
+    $query = "SELECT * FROM users WHERE username='$user' AND password='$pass'";
+    $result = mysqli_query($conn, $query);
+    ```
+
+    **Expected output style:** A numbered findings list, each entry formatted as:
+
+    ```
+    [CRITICAL] | SQL Injection via unsanitized GET parameters | Replace string interpolation with prepared statements: $stmt = $conn->prepare("SELECT * FROM users WHERE username=? AND password=?");
+    ```
+
+    Severity levels run from `[INFO]` through `[LOW]`, `[MEDIUM]`, `[HIGH]`, and `[CRITICAL]`.
+  </Tab>
+</Tabs>
+
+## Tips for Better Results
+
+Getting the most out of any agent comes down to specificity and context. Apply these practices regardless of which agent you're using:
+
+**Be specific about your target environment.** Instead of "write an exploit," say "write a Python exploit targeting CVE-2021-44228 on a Java 8 runtime with no egress filtering." The more constraints you provide, the more precise the output.
+
+**Specify your desired output format.** If you want a numbered list, a Markdown table, a raw script with no explanation, or a full report with headers — say so. The agents follow formatting instructions reliably.
+
+**Include relevant context upfront.** Paste in the code you want reviewed, the domain you're researching, or the scenario you're simulating before asking your question. Agents produce sharper results when they have concrete material to work with.
+
+**Chain agents for complex tasks.** Start with 👁️ OSINT to profile a target, switch to 🛡️ Pentester to identify attack vectors against the discovered infrastructure, then use 💣 Exploit Dev to build a proof of concept. Each agent inherits the conversation history, so context carries forward.
+
+<Tip>
+  If a response drifts from the tone you expected, start your next message with a brief role reminder — for example, "As a pentester, …" — to re-anchor the agent's focus without switching modes.
+</Tip>

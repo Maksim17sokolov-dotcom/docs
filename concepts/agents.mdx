@@ -1,0 +1,56 @@
+---
+title: "AI Agent Modes in WORM VEIL: Choosing the Right Expert"
+sidebarTitle: "Agent Modes"
+description: "WORM VEIL AI offers six specialized agent modes that tailor the model's system prompt and behavior for security research, OSINT, coding, and more."
+---
+
+Agent modes let you configure exactly how the AI behaves before you type a single word. When you select a mode, WORM VEIL injects a purpose-built **system prompt** into the conversation that tells the underlying Dolphin 3.0 Abliterated model to adopt a specific persona, apply domain expertise, and respond using the vocabulary and methodology of that field. Switching modes is like swapping out a specialist — the same uncensored model, focused through a different lens.
+
+## Available Agent Modes
+
+<CardGroup cols={2}>
+  <Card title="Normal" icon="lock-open">
+    The default uncensored mode with no domain restrictions. Use it for general-purpose questions, creative writing, research, or any task that doesn't need a specialist perspective. The model responds without built-in refusals or content filters.
+  </Card>
+  <Card title="Pentester" icon="shield">
+    Configured for penetration testing workflows. The model focuses on exploit techniques, CVE research, attack surface enumeration, and offensive security methodology — answering the way an experienced penetration tester would brief a client or colleague.
+  </Card>
+  <Card title="OSINT" icon="eye">
+    Optimised for open-source intelligence gathering and analysis. The model structures its responses around source discovery, data correlation, target profiling, and intelligence tradecraft, helping you work through OSINT investigations systematically.
+  </Card>
+  <Card title="Exploit Dev" icon="bomb">
+    Focused on exploit development, low-level vulnerability research, shellcode, and binary exploitation. The model engages with memory corruption, ROP chains, bypass techniques, and proof-of-concept code with technical depth.
+  </Card>
+  <Card title="Social Engineering" icon="masks-theater">
+    Tailored for social engineering scenarios including phishing campaign design, pretexting scripts, psychological influence techniques, and deception methodology. Useful for red team planning and security awareness training.
+  </Card>
+  <Card title="Code Review" icon="code">
+    Directed at finding vulnerabilities in source code. The model audits snippets or full files for common weaknesses — injection flaws, authentication bypasses, insecure deserialization, logic errors — and explains remediation steps.
+  </Card>
+</CardGroup>
+
+## How to Switch Agent Modes
+
+<Steps>
+  <Step title="Open the agent selector">
+    Look for the agent mode selector in the **top bar** of the WORM VEIL chat interface. It displays the icon and name of the currently active mode.
+  </Step>
+  <Step title="Click to open the menu">
+    Click the selector to reveal the list of all six modes. Each entry shows the mode icon and a short description of its focus area.
+  </Step>
+  <Step title="Select your mode">
+    Click the mode you want. The system prompt updates immediately — your very next message will be processed under the new mode's configuration.
+  </Step>
+</Steps>
+
+<Note>
+  Switching agent modes mid-conversation changes how the model interprets **new** messages. The model still has access to previous messages in the context window, but its persona and focus shift from the point of switching onward. Start a **New Chat** if you want a completely clean slate under the new mode.
+</Note>
+
+## Persistent Mode Selection
+
+WORM VEIL remembers the last agent mode you used and restores it automatically the next time you open the platform in the same browser. Your selection is saved to **localStorage** alongside your chat history, so it persists across browser sessions on the same device without any account or login required.
+
+<Tip>
+  If you are new to WORM VEIL or exploring a broad topic, start with **Normal** mode. It gives you the full uncensored model with no specialist framing — you can always switch to a focused mode once you know exactly what kind of help you need.
+</Tip>

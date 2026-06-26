@@ -1,0 +1,53 @@
+---
+title: "Using Voice Input to Chat Hands-Free in WORM VEIL"
+sidebarTitle: "Voice Input"
+description: "Speak your messages directly into WORM VEIL using the microphone button. Voice input transcribes your speech and appends it to the current text field."
+---
+
+Voice input lets you dictate messages instead of typing them. WORM VEIL uses the browser's Web Speech API to transcribe your speech in real time and append the result to whatever is already in the input field. This means you can mix voice and typed text freely — start a prompt by typing, add detail by speaking, then edit the combined result before sending.
+
+## Browser Compatibility
+
+Voice input depends on the Web Speech API, which is not available in every browser.
+
+| Browser | Voice Input |
+|---|---|
+| Chrome | ✅ Supported |
+| Edge | ✅ Supported |
+| Safari | ✅ Supported |
+| Firefox | ❌ Not supported |
+
+<Warning>
+  Firefox does not implement the Web Speech API. If you're using Firefox, the microphone button will not function. Switch to Chrome, Edge, or Safari to use voice input.
+</Warning>
+
+## Recording a Message
+
+<Steps>
+  <Step title="Click the microphone button">
+    Find the microphone button next to the **Send** button at the bottom of the chat. Click it once to start recording. The button begins pulsing red to show that it's actively listening.
+  </Step>
+  <Step title="Speak your message">
+    Speak clearly toward your microphone. WORM VEIL records in **Russian (ru-RU)** by default, so speak in Russian for the most accurate transcription. Dictate your full prompt or just the portion you want to add.
+  </Step>
+  <Step title="Stop recording">
+    Click the microphone button again to stop recording early, or simply pause speaking — the API will finalize the transcript automatically when it detects silence.
+  </Step>
+  <Step title="Review the transcript">
+    The transcribed text appears appended to whatever was already in the input field. If you had typed text before recording, your dictation is added after it.
+  </Step>
+  <Step title="Edit if needed">
+    Read over the transcript before sending. Speech recognition occasionally mishears technical terms, proper nouns, or fast speech. Correct any errors directly in the input field.
+  </Step>
+  <Step title="Press Enter to send">
+    When the message looks right, press **Enter** to send it. Use **Shift+Enter** if you want to add another line before sending.
+  </Step>
+</Steps>
+
+## Combining Voice and Text
+
+Because voice input appends to existing text rather than replacing it, you can build messages from both sources freely. Type a structured opening — a command or a context block — then switch to voice to dictate the details, or vice versa. This workflow is especially useful for long prompts where typing every word would be slow.
+
+<Tip>
+  For technical prompts, type the structured parts (code snippets, flags, specific syntax) and use voice for the natural-language description around them. This avoids transcription errors on terms the speech engine might not recognize.
+</Tip>

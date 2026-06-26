@@ -1,0 +1,71 @@
+---
+title: "Zero-Log Policy: How WORM VEIL Handles Your Data"
+sidebarTitle: "Zero-Log Policy"
+description: "WORM VEIL never logs your IP, messages, or identity. All processing is RAM-only, independently audited, and nothing is written to disk."
+---
+
+WORM VEIL AI was built on a single founding principle: a conversation that isn't recorded never needs to be protected after the fact. Every architectural decision — from RAM-only message processing to jurisdiction selection for our servers — flows from that commitment. When your message disappears after a response is generated, it disappears completely, with no copy held anywhere on our infrastructure.
+
+## What Zero-Log Means in Practice
+
+"Zero-log" is not a marketing term here — it is a technical constraint enforced at every layer of the stack. No database write operation is ever issued for message content, IP addresses, session identifiers, or timestamps on any WORM VEIL server. The absence of a log is not a policy that could be reversed by a court order or a rogue employee; there is simply no table, file, or record to hand over.
+
+## What Is Never Collected
+
+The following data points are **never recorded, transmitted to a third party, or written to any persistent storage** on WORM VEIL infrastructure:
+
+| Data Type | Status |
+|---|---|
+| Your IP address | ❌ Never logged |
+| Message content (prompts or responses) | ❌ Never logged |
+| Timestamps of requests | ❌ Never logged |
+| User identifiers or account data | ❌ Never logged |
+| Browser fingerprint data | ❌ Never logged |
+| Session duration or frequency | ❌ Never logged |
+| DNS queries | ❌ Never logged (DNS-over-HTTPS) |
+
+## What Is Stored — and Where
+
+One thing does persist between your sessions: your own chat history, stored exclusively in your **browser's `localStorage`**. This data never leaves your device. WORM VEIL's servers have no knowledge of it, no access to it, and no way to retrieve it.
+
+| Data Type | Where It Lives | Who Controls It |
+|---|---|---|
+| Chat history | Your browser `localStorage` | You, entirely |
+| Session keys | RAM only, destroyed on disconnect | Nobody (ephemeral) |
+| Message content | RAM only, destroyed after response | Nobody (ephemeral) |
+
+<Note>
+  Your `localStorage` chat history is stored only on your device and is never synced to WORM VEIL servers. You can clear it at any time through your browser's developer tools or site settings — doing so permanently erases all local history with no recovery path on our end.
+</Note>
+
+## How RAM-Only Processing Works
+
+Every message you send follows a strict, write-free lifecycle on our servers:
+
+<Steps>
+  <Step title="Message Received">
+    Your encrypted message arrives at the Panama compute host and is decrypted entirely in RAM. No disk I/O occurs at any point during this step.
+  </Step>
+  <Step title="Model Inference">
+    The Dolphin-3.0-Abliterated model processes your prompt in GPU and system RAM. The input tokens exist only in active memory for the duration of inference.
+  </Step>
+  <Step title="Response Sent">
+    The generated response is encrypted in RAM and streamed back through the anonymity chain to your browser.
+  </Step>
+  <Step title="Memory Cleared">
+    As soon as the response is dispatched, all message data is released from RAM. No write operation is ever issued. The exchange leaves no trace on any persistent medium.
+  </Step>
+</Steps>
+
+## Independent Audit Confirmation
+
+WORM VEIL's zero-log architecture has been verified by an independent third-party security audit. Auditors were granted access to review server configurations, network egress rules, and infrastructure code to confirm that no logging mechanisms are present. The audit confirmed:
+
+- No message content is written to disk at any node
+- No IP address logging exists at the gateway, balancer, or compute layer
+- No analytics, telemetry, or tracking scripts are loaded in the client application
+- RAM-only processing is enforced by infrastructure configuration, not merely policy
+
+<Tip>
+  Enable the **Auto-Clear** feature in WORM VEIL's settings to automatically wipe your browser `localStorage` chat history when you close the tab. This ensures that even the local record of your conversations doesn't persist beyond a single session.
+</Tip>

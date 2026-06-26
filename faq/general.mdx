@@ -1,0 +1,126 @@
+---
+title: "Frequently Asked Questions About WORM VEIL AI"
+sidebarTitle: "General FAQ"
+description: "Answers to common questions about WORM VEIL AI's anonymity, cost, the AI model powering it, data storage practices, and how the platform works."
+---
+
+WORM VEIL AI is built around a simple idea: powerful AI assistance with no compromises on privacy. Whether you're curious about how your data is handled, what makes the platform free, or which agent mode fits your workflow, the answers below cover everything you need to know before you start chatting.
+
+<Accordion title="Is WORM VEIL AI really free?">
+  Yes — WORM VEIL AI is completely free to use with no hidden fees, subscription tiers, or paywalled features. The platform is funded entirely by decentralized cryptocurrency donations from the community. You get full access to all six agent modes, multi-layer anonymity routing, and the full capability of the underlying AI model without spending a cent.
+
+  <Tip>
+    If you find the platform valuable, consider contributing a crypto donation to help keep the servers running and the service free for everyone.
+  </Tip>
+</Accordion>
+
+<Accordion title="Do I need to create an account?">
+  No. WORM VEIL AI requires zero sign-up. When you first open the app, the platform automatically generates a unique anonymous ID for you — no email address, phone number, or personal information of any kind is collected or requested. Your ID lives in your browser and is yours immediately, without any registration flow.
+
+  <Note>
+    Your anonymous user ID is displayed in the sidebar footer. Copy it and store it somewhere safe if you want to use the same identity across devices in the future.
+  </Note>
+</Accordion>
+
+<Accordion title="Are my messages stored anywhere?">
+  Your messages are **not** stored on any server. Every message you send is processed entirely in RAM and deleted as soon as the AI response is generated — nothing is written to disk on the server side. An independent audit has confirmed this zero-log architecture.
+
+  Chat history you see in the interface is stored exclusively in your browser's **localStorage**, which means:
+
+  - It never leaves your device.
+  - It is tied to the specific browser you're using.
+  - Clearing your browser data or localStorage will permanently erase it.
+
+  <Warning>
+    Because history lives only in your browser, there is no way to recover it from the server. Back up any conversations you want to keep before clearing browser data.
+  </Warning>
+</Accordion>
+
+<Accordion title="Which AI model powers WORM VEIL?">
+  WORM VEIL AI runs on **Dolphin 3.0 Abliterated 8B**, an uncensored large language model served via Ollama on the primary Panama server. The model runs on a cluster of **4× NVIDIA A100 80 GB** GPUs, providing the raw compute needed for fast, high-quality responses without content restrictions.
+
+  <Info>
+    The "Abliterated" variant of Dolphin 3.0 has its refusal mechanisms removed, allowing it to respond to a much wider range of queries than standard assistant models.
+  </Info>
+</Accordion>
+
+<Accordion title="How anonymous am I when using WORM VEIL?">
+  WORM VEIL AI layers multiple privacy technologies to protect your identity:
+
+  - **Tor routing** — your traffic passes through the Tor network before reaching WORM VEIL servers.
+  - **VPN tunnels** — an additional VPN layer wraps your connection through the Amsterdam gateway.
+  - **3-hop SOCKS5 proxy chains** — requests are routed through a three-hop proxy chain before the model ever processes them.
+  - **Zero IP logging** — the platform does not record or store your IP address at any point.
+  - **Browser fingerprint protection** — active by default to prevent tracking through browser attributes.
+
+  No personal data is collected, no accounts are linked to real identities, and the servers operate in jurisdictions without mandatory data-retention laws.
+</Accordion>
+
+<Accordion title="Where are the servers located?">
+  WORM VEIL AI operates across three server locations, each chosen deliberately:
+
+  <CardGroup cols={3}>
+    <Card title="🇳🇱 Amsterdam" icon="shield">
+      VPN gateway — entry point for anonymized traffic routing.
+    </Card>
+    <Card title="🇸🇬 Singapore" icon="sliders">
+      Load balancer — distributes requests across the infrastructure.
+    </Card>
+    <Card title="🇵🇦 Panama" icon="microchip">
+      Ollama main host — where the Dolphin 3.0 model actually runs.
+    </Card>
+  </CardGroup>
+
+  All three jurisdictions operate outside the reach of aggressive data-retention laws common in the EU and US, adding a legal layer of protection on top of the technical privacy measures.
+</Accordion>
+
+<Accordion title="What agent modes are available?">
+  WORM VEIL AI offers six specialized agent modes, each tuned with a different system prompt to optimize the model's behavior for a specific use case:
+
+  | Mode | Best For |
+  |---|---|
+  | **Normal** | General-purpose conversation, writing, research, and everyday tasks. |
+  | **Pentester** | Network and application penetration testing guidance, methodology, and tooling. |
+  | **OSINT** | Open-source intelligence gathering, reconnaissance techniques, and data correlation. |
+  | **Exploit Dev** | Vulnerability research, exploit development concepts, and low-level security topics. |
+  | **Social Engineering** | Understanding and analyzing manipulation tactics, phishing, and human-factor security. |
+  | **Code Review** | Auditing source code for bugs, security flaws, and quality issues. |
+
+  You can switch between modes at any time from the sidebar — your current conversation context carries over unless you start a new chat.
+</Accordion>
+
+<Accordion title="Can I use WORM VEIL AI on mobile?">
+  Yes. WORM VEIL AI is fully mobile-responsive and works on smartphones and tablets through any modern mobile browser. The interface adapts to smaller screens automatically.
+
+  On mobile, the sidebar is hidden by default to maximize screen space. Tap the **☰ hamburger icon** in the top-left corner to open it. The sidebar closes again when you tap anywhere outside of it.
+
+  <Tip>
+    For the best mobile experience, use Chrome for Android or Safari for iOS — both support voice input as well.
+  </Tip>
+</Accordion>
+
+<Accordion title="Does voice input work?">
+  Yes, voice input is supported via the **Web Speech API**, which is built into most major browsers. You can speak your prompt instead of typing it.
+
+  **Supported browsers:**
+  - ✅ Google Chrome
+  - ✅ Microsoft Edge
+  - ✅ Apple Safari
+
+  **Not supported:**
+  - ❌ Mozilla Firefox (Web Speech API not implemented)
+
+  When voice input is active, your browser will request microphone permission. Grant it when prompted to enable speech-to-text transcription directly in the chat input field.
+</Accordion>
+
+<Accordion title="How do I save my user ID?">
+  Your unique anonymous user ID is displayed in the **sidebar footer** at the bottom of the left panel. To save it:
+
+  1. Open the sidebar (tap ☰ on mobile, or it's visible by default on desktop).
+  2. Locate your user ID in the footer area.
+  3. Copy it and store it in a secure location — a password manager is ideal.
+
+  <Warning>
+    If you lose your user ID, you **cannot** recover it or restore cross-device access to your session. Chat history is stored locally in your browser, so you can continue using the app on your current device, but you won't be able to link a new device to your existing identity.
+  </Warning>
+</Accordion>

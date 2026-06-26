@@ -1,0 +1,106 @@
+---
+title: "WORM VEIL Server Infrastructure and Node Locations"
+sidebarTitle: "Server Nodes"
+description: "WORM VEIL runs three zero-log nodes in Amsterdam, Singapore, and Panama — each in a jurisdiction with no data retention laws, forming a layered anonymity stack."
+---
+
+WORM VEIL's infrastructure is built around three purpose-specific nodes that form a sequential anonymity chain. Each node handles a distinct role — VPN gateway, traffic balancing, and AI compute — and each operates under an independent zero-log policy. Spread across 12 data centers and deliberately placed in jurisdictions that have neither mandatory data retention laws nor extradition agreements with major surveillance states, the architecture is designed so that no single node, and no coalition of nodes, can reconstruct who you are or what you asked.
+
+<CardGroup cols={3}>
+  <Card title="Amsterdam Gateway" icon="shield-halved">
+    **Role:** VPN Gateway & Tor Entry Node
+
+    **Protocols:** WireGuard, AES-256-GCM + ChaCha20
+
+    **Location:** Netherlands (no data retention mandate)
+  </Card>
+  <Card title="Singapore Balancer" icon="arrows-split-up-and-left">
+    **Role:** Load Balancer & DDoS Shield
+
+    **Protocols:** 3-hop SOCKS5 proxy chain
+
+    **Location:** Singapore (no mandatory retention law)
+  </Card>
+  <Card title="Panama Main Host" icon="microchip">
+    **Role:** AI Compute
+
+    **Hardware:** 4× NVIDIA A100 80GB, 512 GB RAM
+
+    **Location:** Panama (no extradition treaty)
+  </Card>
+</CardGroup>
+
+<Info>
+  Every request you make follows this path: **Your browser → Amsterdam Gateway → Singapore Balancer → Panama Main Host → response back through the same chain**. Each hop strips identifying information added by the previous layer, so by the time your request reaches the compute node, it carries no information that can be traced back to you.
+</Info>
+
+---
+
+## Amsterdam Gateway
+
+The Amsterdam node is your first point of contact with WORM VEIL infrastructure and serves as the outermost shield of the anonymity stack.
+
+**Role:** VPN gateway and Tor entry node. This node accepts your incoming connection, terminates the WireGuard VPN tunnel, and forwards your traffic into the Tor network before passing it inward to the Singapore balancer.
+
+**Location:** Netherlands. Dutch law does not impose blanket mandatory data retention requirements on service providers of this kind, and the jurisdiction provides a stable legal environment without the surveillance partnerships that characterize Five Eyes nations.
+
+**Protocols and Encryption:**
+
+| Property | Value |
+|---|---|
+| VPN Protocol | WireGuard |
+| Primary Cipher | AES-256-GCM |
+| Alternative Cipher | ChaCha20 |
+| Tor Function | Entry node — strips client IP before forwarding |
+| Log Policy | Zero-log |
+
+WireGuard provides the VPN tunnel with a formally reviewed cryptographic foundation. AES-256-GCM handles bulk encryption, while ChaCha20 is available as an alternative for environments where constant-time software implementations are preferable. As a Tor entry node, this server receives your real connection but immediately discards IP information and routes traffic onward without recording it.
+
+---
+
+## Singapore Balancer
+
+The Singapore node sits in the middle of the chain, handling traffic distribution and providing a hardened perimeter against volumetric attacks.
+
+**Role:** Load balancer and DDoS protection layer. This node distributes inbound requests across available compute resources, absorbs and filters attack traffic through rate limiting, and routes clean requests onward to Panama through a 3-hop SOCKS5 proxy chain.
+
+**Location:** Singapore. Singapore's legal framework does not impose data retention mandates equivalent to those in the EU or US, and its geographic position provides low-latency connectivity to both European and Asian users.
+
+**Capabilities:**
+
+| Property | Value |
+|---|---|
+| Primary Function | Load balancing across compute nodes |
+| DDoS Protection | Rate limiting at network and application layer |
+| Proxy Architecture | 3-hop SOCKS5 proxy chain |
+| Log Policy | Zero-log |
+
+The 3-hop SOCKS5 proxy chain means that traffic passes through three independent proxy relays within this node's network before reaching Panama. This multi-hop design ensures that even if one relay were monitored, an observer would see only one segment of the chain — not the origin or the destination.
+
+---
+
+## Panama Main Host
+
+The Panama node is where your prompt is actually processed. It houses the AI compute hardware that runs WORM VEIL's language model and returns responses through the chain.
+
+**Role:** Primary AI inference host. This node runs the Dolphin-3.0-Abliterated 8B model on dedicated GPU hardware, processes your decrypted prompt entirely in RAM, and returns the response without writing any data to disk.
+
+**Location:** Panama. Panama has no data retention laws applicable to this infrastructure, and — critically — no extradition treaty with the United States or the European Union. Legal requests from those jurisdictions have no pathway to compel data disclosure, and there is no data to disclose in any case.
+
+**Hardware Specifications:**
+
+| Component | Specification |
+|---|---|
+| GPUs | 4× NVIDIA A100 80 GB |
+| System RAM | 512 GB |
+| AI Model | Dolphin-3.0-Abliterated 8B |
+| Storage Policy | RAM-only inference, zero disk writes |
+| Log Policy | Zero-log |
+
+The four NVIDIA A100 GPUs provide 320 GB of combined GPU memory, enabling fast, low-latency inference for the Dolphin-3.0-Abliterated model. All computation occurs in GPU and system RAM. When a response is complete and dispatched back through the chain, the memory holding your prompt and response is released — no record remains.
+
+---
+
+<Note>
+  Each of the three nodes maintains its zero-log policy **independently**. There is no central logging aggregator, no analytics pipeline, and no mechanism by which data from one node is combined with data from another. Even a full compromise of all three nodes simultaneously would yield no historical conversation data.
+</Note>

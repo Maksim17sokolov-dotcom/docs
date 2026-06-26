@@ -1,0 +1,156 @@
+---
+title: "Troubleshooting Common Issues in WORM VEIL AI"
+sidebarTitle: "Troubleshooting"
+description: "Step-by-step fixes for offline status badges, missing chat history, voice input errors, slow responses, lost user IDs, and other common WORM VEIL issues."
+---
+
+Most issues with WORM VEIL AI fall into a small number of categories: backend connectivity, browser-specific behavior, or local storage changes. Work through the relevant section below to resolve your issue quickly — and check the status badge (⚡ **ONLINE** / 🔄 **GENERATING...** / 🔴 **OFFLINE**) first, as it tells you a lot about what's happening at a glance.
+
+<Accordion title="Status badge shows 🔴 OFFLINE">
+  The 🔴 **OFFLINE** badge means the app cannot reach the WORM VEIL backend. Here's how to diagnose it:
+
+  1. **Check your internet connection.** Open another site to confirm your network is working.
+  2. **Check the Tor/VPN layer.** If you're routing through Tor or a VPN manually, ensure that connection is active.
+  3. **Wait and retry.** The backend may be temporarily unreachable due to a brief server restart or network hiccup. Refresh the page after 1–2 minutes.
+  4. **Check for a service announcement.** Follow the official WORM VEIL channels for any posted maintenance windows.
+
+  <Note>
+    The status badge updates automatically. Once the backend comes back online, it will switch to ⚡ **ONLINE** without requiring a manual page refresh.
+  </Note>
+</Accordion>
+
+<Accordion title='AI response says "Ollama not running"'>
+  This message means the **Ollama model server** on the Panama backend is temporarily unavailable — the Dolphin 3.0 model process has stopped or has not yet started.
+
+  This is a **server-side issue**, not something caused by your browser or connection. You do not need to install or run anything yourself. Simply wait a few minutes and try sending your message again.
+
+  <Info>
+    For context: Ollama is the runtime that serves the Dolphin 3.0 Abliterated 8B model on the backend GPU cluster. If the process crashes or the server restarts, this message appears until Ollama is back up.
+  </Info>
+
+  <Tip>
+    If the message persists for more than 10–15 minutes, check official WORM VEIL status channels — the team may already be aware and working on a fix.
+  </Tip>
+</Accordion>
+
+<Accordion title="Voice input button does nothing">
+  If the voice input button appears unresponsive, work through these checks in order:
+
+  **1. Confirm your browser is supported.**
+  Voice input uses the Web Speech API, which is only available in:
+  - ✅ Google Chrome
+  - ✅ Microsoft Edge
+  - ✅ Apple Safari
+
+  Firefox does **not** support the Web Speech API. If you're on Firefox, switch to a supported browser.
+
+  **2. Grant microphone permission.**
+  The first time you use voice input, your browser will ask for microphone access. If you dismissed or denied that prompt:
+  - **Chrome/Edge:** Click the camera/microphone icon in the address bar and set microphone to "Allow."
+  - **Safari:** Go to **Settings → Websites → Microphone** and allow the WORM VEIL domain.
+
+  **3. Check your system microphone.**
+  Make sure a microphone is physically connected and selected as the default input device in your operating system audio settings.
+
+  <Warning>
+    Microphone permission must be granted at the browser level. Blocking it in your browser settings will prevent voice input from working regardless of system permissions.
+  </Warning>
+</Accordion>
+
+<Accordion title="My chat history disappeared">
+  Chat history in WORM VEIL AI is stored **only in your browser's localStorage**. It is not backed up to any server. History can disappear for the following reasons:
+
+  - **You used the "🗑️ All at once" button** in the sidebar footer, which wipes all local data.
+  - **Your browser cleared localStorage automatically** — some browsers do this when disk space is low or when private/incognito mode ends.
+  - **You cleared browser data manually** — clearing "cookies and site data" or "cached data" in browser settings removes localStorage.
+  - **You opened WORM VEIL in a different browser or device** — history is device- and browser-specific; it does not sync.
+
+  <Note>
+    There is no way to recover deleted local history from the server — the zero-log architecture means nothing was stored server-side to begin with. Going forward, copy and save any conversations you want to keep long-term.
+  </Note>
+</Accordion>
+
+<Accordion title="Responses are very slow">
+  Slow responses are usually caused by one of the following:
+
+  - **High server load.** The Panama GPU cluster is shared across all users. During peak hours, queue times increase. Try again during off-peak hours.
+  - **Complex or long prompts.** The Dolphin 3.0 8B model generates tokens sequentially — longer, more complex queries take more time to process. Try breaking your question into smaller parts or simplifying the prompt.
+  - **Multi-hop routing latency.** Tor routing and proxy chains add network latency by design. This is a trade-off for anonymity, not a bug.
+
+  <Tip>
+    If you need a faster response, try a more concise prompt first. You can always follow up with additional detail once you have an initial answer.
+  </Tip>
+
+  <Info>
+    The status badge will show 🔄 **GENERATING...** while a response is being streamed. If it stays in that state for more than a few minutes without output, try refreshing the page and resending your message.
+  </Info>
+</Accordion>
+
+<Accordion title="I lost my user ID">
+  If you've lost your user ID, here's what you need to know:
+
+  - **On your current device:** You can continue using WORM VEIL AI normally. Your existing chat history stored in localStorage on that device is still accessible.
+  - **On a new device:** Without your user ID, you cannot link a new device to your existing anonymous session. Cross-device sync is not possible without it.
+  - **Recovery:** There is no server-side account recovery mechanism — by design, WORM VEIL holds no personal data to look up.
+
+  The simplest path forward is to start a new session on your new device. A fresh anonymous ID will be generated automatically when you open the app.
+
+  <Warning>
+    To avoid this in the future, copy your user ID from the sidebar footer and store it in a password manager or secure notes app as soon as you start using WORM VEIL AI.
+  </Warning>
+</Accordion>
+
+<Accordion title="The sidebar doesn't open on mobile">
+  On mobile, the sidebar is hidden by default to preserve screen space. To open it, tap the **☰ hamburger icon** located in the **top-left corner** of the screen.
+
+  If tapping the icon doesn't work:
+  - Make sure you're tapping the correct icon — it's three horizontal lines stacked vertically.
+  - Try a hard reload of the page (pull down to refresh on iOS Safari, or use the browser refresh button).
+  - Confirm JavaScript is enabled in your mobile browser settings, as the sidebar requires it to function.
+
+  To close the sidebar, tap anywhere outside of it on the main chat area.
+</Accordion>
+
+<Accordion title="Code blocks don't have a copy button">
+  The 📋 copy button on code blocks appears **on hover** (desktop) or is **always visible** (mobile). If you can't see it:
+
+  **1. Enable JavaScript.**
+  The copy button is rendered dynamically by JavaScript. If JS is disabled in your browser settings or blocked by an extension, the button won't appear. Check your browser settings and any content-blocking extensions (like NoScript or uBlock Origin in advanced mode) to ensure JavaScript is permitted on the WORM VEIL domain.
+
+  **2. Hover over the code block (desktop).**
+  On desktop, move your mouse cursor over the code block — the 📋 icon appears in the top-right corner of the block when hovered.
+
+  **3. Try a different browser.**
+  If the button still doesn't appear, test in a clean browser profile without extensions to rule out interference.
+
+  <Tip>
+    As a fallback, you can always select the code text manually and use **Ctrl+C** (or **Cmd+C** on Mac) to copy it.
+  </Tip>
+</Accordion>
+
+<Accordion title="I want to start completely fresh">
+  To wipe all local WORM VEIL data and start with a clean slate:
+
+  1. Open the **sidebar** (tap ☰ on mobile).
+  2. Scroll to the **sidebar footer**.
+  3. Click the **🗑️ All at once** button.
+
+  This clears your entire chat history, your current agent mode setting, and all other locally stored WORM VEIL data from your browser's localStorage. A new anonymous user ID will be generated the next time the app initializes.
+
+  <Warning>
+    This action is **permanent and irreversible**. There is no undo, and no server-side backup exists. Only proceed if you are certain you want to erase all local data.
+  </Warning>
+</Accordion>
+
+<Accordion title="My agent mode keeps resetting">
+  WORM VEIL AI saves your last selected agent mode to **localStorage** so it persists between sessions. If your agent mode keeps reverting to the default, the most likely cause is that localStorage is being cleared between your sessions.
+
+  Common reasons this happens:
+  - **Private/Incognito mode** — browsers wipe localStorage when an incognito session ends. Use a regular browser window to retain settings.
+  - **Browser set to clear data on close** — check your browser's privacy settings under "Clear browsing data on exit" or similar and exclude localStorage/site data.
+  - **Third-party extensions** — some cookie-management or privacy extensions aggressively clear site data on navigation or close.
+
+  <Note>
+    If you use the "🗑️ All at once" button to clear chat history, this also resets your saved agent mode — it clears all localStorage, not just conversations.
+  </Note>
+</Accordion>

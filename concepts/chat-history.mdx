@@ -1,0 +1,68 @@
+---
+title: "Managing Your Chat History in WORM VEIL AI"
+sidebarTitle: "Chat History"
+description: "WORM VEIL stores your chat history only in your browser's localStorage — never on any server. Learn how to manage, resume, and delete your conversations."
+---
+
+Every conversation you have on WORM VEIL AI is saved directly in your browser's **localStorage** — a private storage area that never leaves your device. No message, title, or timestamp is ever transmitted to or retained by any WORM VEIL server. This means your history is completely under your control, and completely absent from any infrastructure that could be subpoenaed, breached, or logged.
+
+## The Chat Sidebar
+
+The left sidebar lists all your saved conversations in reverse chronological order. Each entry shows the opening message or an auto-generated title so you can identify conversations at a glance.
+
+- **Click any conversation** in the sidebar to load it and resume where you left off.
+- The active conversation is highlighted so you always know which context the model is responding in.
+- The sidebar loads instantly on page open because all data is read directly from localStorage — no network request is needed.
+
+## Starting a New Chat
+
+Click the **New Chat** button at the top of the sidebar to open a blank conversation. The model's context resets entirely — none of the previous conversation is included in the system prompt.
+
+<Info>
+  When you continue an existing conversation, WORM VEIL sends the **last 10 messages** as context to the model along with your new prompt. Older messages remain visible in your local history but are not included in the context window sent to the server. If a thread grows very long, start a new chat to keep the model focused on your current task.
+</Info>
+
+## Deleting Individual Chats
+
+To remove a single conversation:
+
+<Steps>
+  <Step title="Hover over the conversation">
+    Move your cursor over the conversation entry in the sidebar. A **✕ button** appears on the right side of the item.
+  </Step>
+  <Step title="Click ✕">
+    Click the ✕ button to permanently delete that conversation from localStorage. The entry disappears immediately from the sidebar.
+  </Step>
+</Steps>
+
+## Clearing Everything at Once
+
+To wipe your entire chat history in one action, click the **🗑️ All at once** button in the **sidebar footer**. This deletes all conversations, your stored user ID, your agent mode preference, and any other WORM VEIL data held in localStorage in a single operation.
+
+<Warning>
+  Clearing your localStorage is **irreversible**. WORM VEIL servers hold no backup of your conversations — once you clear, that data is permanently gone. Export or copy any conversations you want to keep before using this button.
+</Warning>
+
+## Auto-Clear Timers
+
+WORM VEIL lets you schedule an automatic wipe so your history disappears without manual action — useful if you are on a shared or untrusted device.
+
+<Steps>
+  <Step title="Open the auto-clear menu">
+    Find the auto-clear option in the sidebar footer, next to the clear-all button.
+  </Step>
+  <Step title="Choose a timer">
+    Select either **5 minutes** or **1 hour**. A countdown indicator appears in the sidebar to show time remaining.
+  </Step>
+  <Step title="Cancel if needed">
+    To cancel the scheduled wipe before it fires, return to the auto-clear menu and select **Cancel**. Your history remains intact.
+  </Step>
+</Steps>
+
+<Accordion title="What does auto-clear delete?">
+  Auto-clear performs the same action as the 🗑️ All at once button — it wipes all conversations, your user ID, and your stored preferences from localStorage. It does not affect any other browser data outside of WORM VEIL's own localStorage keys.
+</Accordion>
+
+<Note>
+  Chat history is **device-specific**. Because everything is stored in your browser's localStorage, your conversations on one device will not appear on any other device — even if you use the same user ID. If you switch devices or browsers, you start with a clean slate.
+</Note>
