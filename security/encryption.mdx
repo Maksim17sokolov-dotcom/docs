@@ -1,7 +1,7 @@
 ---
-title: "Encryption and Transport Security in WORM VEIL AI"
+title: "Encryption and Transport Security — WORM VEIL AI"
 sidebarTitle: "Encryption"
-description: "WORM VEIL encrypts every request with AES-256-GCM and TLS 1.3, adds Perfect Forward Secrecy, DNS-over-HTTPS, and routes traffic through Tor for full obfuscation."
+description: "WORM VEIL uses AES-256-GCM, TLS 1.3, Perfect Forward Secrecy, DNS-over-HTTPS, and Tor routing to encrypt and anonymize every request you send."
 ---
 
 Every request you send through WORM VEIL AI is encrypted before it leaves your browser and remains protected across every hop in the routing chain. Rather than relying on a single layer of protection, WORM VEIL stacks multiple independent cryptographic mechanisms — each one ensuring that even if one layer were somehow compromised, the others continue to protect your traffic and identity.
@@ -51,19 +51,19 @@ Encrypting your message content is necessary but not sufficient — the fact tha
 The most sophisticated server-side security can be undermined by browser APIs that leak identifying information. WORM VEIL's client disables or spoofs several such APIs before your first request is ever sent.
 
 <CardGroup cols={2}>
-  <Card title="WebRTC Disabled" icon="wifi-slash">
+  <Card title="WebRTC Disabled" icon="wifi-slash" href="/concepts/anonymity">
     WebRTC is a browser API that can expose your real IP address — even behind a VPN or Tor — by establishing direct peer-to-peer connections. WORM VEIL disables WebRTC entirely, closing this common deanonymization vector.
   </Card>
-  <Card title="Canvas Fingerprint Noise" icon="paintbrush">
+  <Card title="Canvas Fingerprint Noise" icon="paintbrush" href="/concepts/anonymity">
     Websites can fingerprint your browser by rendering hidden graphics and reading back the pixel data, which varies subtly between hardware and driver combinations. WORM VEIL injects random noise into canvas pixel data, making each read unique and non-attributable.
   </Card>
-  <Card title="AudioContext Noise" icon="waveform">
+  <Card title="AudioContext Noise" icon="waveform" href="/concepts/anonymity">
     Similar to canvas fingerprinting, audio APIs can fingerprint your device by measuring how your hardware processes audio signals. WORM VEIL randomizes audio buffer output to neutralize this technique.
   </Card>
-  <Card title="WebGL Spoofing" icon="cube">
+  <Card title="WebGL Spoofing" icon="cube" href="/concepts/anonymity">
     WebGL exposes your GPU vendor and renderer strings, which are highly identifying. WORM VEIL overrides these to return the generic values `"Vendor"` and `"Renderer"`, preventing hardware-based fingerprinting.
   </Card>
-  <Card title="User-Agent Override" icon="browser">
+  <Card title="User-Agent Override" icon="browser" href="/concepts/anonymity">
     Your browser's `navigator.userAgent` string reveals your OS, browser version, and build details. WORM VEIL overrides this with a generic Windows Chrome user-agent string, blending you into the largest possible anonymity set.
   </Card>
 </CardGroup>

@@ -1,5 +1,5 @@
 ---
-title: "How WORM VEIL AI Protects Your Anonymity Online"
+title: "WORM VEIL AI Anonymity: Tor, VPN, and Fingerprinting"
 sidebarTitle: "Anonymity"
 description: "WORM VEIL AI wraps every request in multi-layer anonymity: Tor routing, VPN tunnels, zero-log policy, and browser fingerprint protection."
 ---
@@ -29,19 +29,19 @@ The full path uses **WebSocket over Tor**, **DNS-over-HTTPS** to prevent DNS lea
 Even with encrypted, anonymised traffic, a website can often identify you through your browser's unique fingerprint — a combination of subtle signals your browser emits by default. WORM VEIL AI disables or spoofs each of these vectors automatically.
 
 <CardGroup cols={2}>
-  <Card title="WebRTC Disabled" icon="wifi-slash">
+  <Card title="WebRTC Disabled" icon="wifi-slash" href="/security/encryption">
     WebRTC can expose your real IP address even when you are behind a VPN or Tor, because it establishes peer-to-peer connections that bypass proxy settings. WORM VEIL disables WebRTC entirely so your real IP is never leaked through this channel.
   </Card>
-  <Card title="Canvas Noise" icon="paintbrush">
+  <Card title="Canvas Noise" icon="paintbrush" href="/security/encryption">
     Browsers render canvas elements in subtly different ways depending on your GPU, drivers, and OS — creating a highly stable fingerprint. WORM VEIL injects randomised noise into canvas read-back calls so each session produces a different canvas hash.
   </Card>
-  <Card title="AudioContext Noise" icon="waveform">
+  <Card title="AudioContext Noise" icon="waveform" href="/security/encryption">
     The Web Audio API generates device-specific output that trackers use to fingerprint hardware. WORM VEIL adds imperceptible noise to AudioContext values, making your audio fingerprint unique and non-repeatable across sessions.
   </Card>
-  <Card title="WebGL Vendor Spoofing" icon="microchip">
+  <Card title="WebGL Vendor Spoofing" icon="microchip" href="/security/encryption">
     WebGL exposes your GPU vendor and renderer strings, which are stable and identifying. WORM VEIL spoofs these strings so your graphics hardware cannot be used to track you across visits.
   </Card>
-  <Card title="Fake User-Agent" icon="browser">
+  <Card title="Fake User-Agent" icon="browser" href="/security/encryption">
     Your browser's User-Agent string reveals your browser version, operating system, and sometimes device type. WORM VEIL substitutes a randomised User-Agent to prevent this information from being correlated with your identity.
   </Card>
 </CardGroup>

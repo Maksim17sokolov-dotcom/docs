@@ -1,27 +1,27 @@
 ---
 title: "WORM VEIL Server Infrastructure and Node Locations"
 sidebarTitle: "Server Nodes"
-description: "WORM VEIL runs three zero-log nodes in Amsterdam, Singapore, and Panama — each in a jurisdiction with no data retention laws, forming a layered anonymity stack."
+description: "WORM VEIL runs three zero-log nodes in Amsterdam, Singapore, and Panama — each in a no-retention jurisdiction — forming a layered anonymity chain."
 ---
 
 WORM VEIL's infrastructure is built around three purpose-specific nodes that form a sequential anonymity chain. Each node handles a distinct role — VPN gateway, traffic balancing, and AI compute — and each operates under an independent zero-log policy. Spread across 12 data centers and deliberately placed in jurisdictions that have neither mandatory data retention laws nor extradition agreements with major surveillance states, the architecture is designed so that no single node, and no coalition of nodes, can reconstruct who you are or what you asked.
 
 <CardGroup cols={3}>
-  <Card title="Amsterdam Gateway" icon="shield-halved">
+  <Card title="Amsterdam Gateway" icon="shield-halved" href="/security/servers">
     **Role:** VPN Gateway & Tor Entry Node
 
     **Protocols:** WireGuard, AES-256-GCM + ChaCha20
 
     **Location:** Netherlands (no data retention mandate)
   </Card>
-  <Card title="Singapore Balancer" icon="arrows-split-up-and-left">
+  <Card title="Singapore Balancer" icon="arrows-split-up-and-left" href="/security/servers">
     **Role:** Load Balancer & DDoS Shield
 
     **Protocols:** 3-hop SOCKS5 proxy chain
 
     **Location:** Singapore (no mandatory retention law)
   </Card>
-  <Card title="Panama Main Host" icon="microchip">
+  <Card title="Panama Main Host" icon="microchip" href="/security/servers">
     **Role:** AI Compute
 
     **Hardware:** 4× NVIDIA A100 80GB, 512 GB RAM

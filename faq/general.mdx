@@ -1,5 +1,5 @@
 ---
-title: "Frequently Asked Questions About WORM VEIL AI"
+title: "WORM VEIL AI: Frequently Asked Questions"
 sidebarTitle: "General FAQ"
 description: "Answers to common questions about WORM VEIL AI's anonymity, cost, the AI model powering it, data storage practices, and how the platform works."
 ---
@@ -36,15 +36,15 @@ WORM VEIL AI is built around a simple idea: powerful AI assistance with no compr
   </Warning>
 </Accordion>
 
-<Accordion title="Which AI model powers WORM VEIL?">
-  WORM VEIL AI runs on **Dolphin 3.0 Abliterated 8B**, an uncensored large language model served via Ollama on the primary Panama server. The model runs on a cluster of **4× NVIDIA A100 80 GB** GPUs, providing the raw compute needed for fast, high-quality responses without content restrictions.
+<Accordion title="Which AI model powers WORM VEIL AI?">
+  WORM VEIL AI runs on **Dolphin 3.0 Abliterated 8B**, an uncensored large language model served on the primary Panama server. The model runs on a cluster of **4× NVIDIA A100 80 GB** GPUs, providing the raw compute needed for fast, high-quality responses without content restrictions.
 
   <Info>
     The "Abliterated" variant of Dolphin 3.0 has its refusal mechanisms removed, allowing it to respond to a much wider range of queries than standard assistant models.
   </Info>
 </Accordion>
 
-<Accordion title="How anonymous am I when using WORM VEIL?">
+<Accordion title="How anonymous am I when using WORM VEIL AI?">
   WORM VEIL AI layers multiple privacy technologies to protect your identity:
 
   - **Tor routing** — your traffic passes through the Tor network before reaching WORM VEIL servers.
@@ -60,13 +60,13 @@ WORM VEIL AI is built around a simple idea: powerful AI assistance with no compr
   WORM VEIL AI operates across three server locations, each chosen deliberately:
 
   <CardGroup cols={3}>
-    <Card title="🇳🇱 Amsterdam" icon="shield">
+    <Card title="🇳🇱 Amsterdam" icon="shield" href="/security/servers">
       VPN gateway — entry point for anonymized traffic routing.
     </Card>
-    <Card title="🇸🇬 Singapore" icon="sliders">
+    <Card title="🇸🇬 Singapore" icon="sliders" href="/security/servers">
       Load balancer — distributes requests across the infrastructure.
     </Card>
-    <Card title="🇵🇦 Panama" icon="microchip">
+    <Card title="🇵🇦 Panama" icon="microchip" href="/security/servers">
       Ollama main host — where the Dolphin 3.0 model actually runs.
     </Card>
   </CardGroup>
